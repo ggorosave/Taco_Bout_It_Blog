@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ggorosave/Taco_Bout_It_Blog#readme",
   "dependencies": {
+    "@types/sequelize": "^4.28.14",
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.5",
     "dotenv": "^16.0.3",
