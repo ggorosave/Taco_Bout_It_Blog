@@ -65,7 +65,18 @@ router.put('/:id', async (req, res) => {
 // route to delete a post
 router.delete('/:id', async (req, res) => {
     try {
+        const deletedBlogPost = await BlogPost.destroy({
+            where: {
+                id: req.params.id
+            },
+        })
 
+        if (!deletedBlogPost) {
+            res.status(404).json({ message: 'No blog post found with this id!' });
+            return;
+        }
+
+        res.status(200).json(deletedBlogPost);
     } catch(err) {
         res.status(400).json(err);
     }
