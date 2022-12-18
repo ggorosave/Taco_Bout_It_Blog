@@ -20,4 +20,13 @@ Comment.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
+// Associates comments to article
+BlogPost.hasMany(Comment, {
+    foreignKey: 'blogpost_id',
+})
+
+Comment.belongsTo(BlogPost, {
+    foreignKey: 'blogpost_id',
+})
+
 module.exports = { User, BlogPost, Comment };
