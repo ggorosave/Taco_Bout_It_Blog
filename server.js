@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Add helpers in the curly braces below
-const hbs = exphbs({});
+const hbs = exphbs.create({});
 
 const tacoSession = {
     secret: "Super secret taco",

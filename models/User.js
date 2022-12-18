@@ -38,7 +38,7 @@ User.init(
     },
     {
         hooks: {
-            beforeBulkCreate: async (newUserData) => {
+            beforeCreate: async (newUserData) => {
                 newUserData.password = await bycrypt.hash(newUserData.password, 10);
                 return newUserData;
             },
