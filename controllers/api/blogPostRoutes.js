@@ -44,6 +44,18 @@ router.post('/', async (req, res) => {
 // route to update a post
 router.put('/:id', async (req, res) => {
     try {
+        const updatedBlogPost = await BlogPost.update(req.body, {
+            where: {
+                id: req.params.id,
+            }
+        });
+
+        if (!updatedBlogPost) {
+            res.status(404).json({ message: 'No blog post found with this id!' });
+            return;
+        }
+
+        res.status(200).json(updatedBlogPost);
 
     } catch(err) {
         res.status(400).json(err);
