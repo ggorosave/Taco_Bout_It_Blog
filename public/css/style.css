@@ -1,0 +1,22 @@
+/* Color Palete:
+prim: #363333
+sec: #272121
+tert: #e16428
+quat: #f6e9e9
+*/
+
+/* Fonts:
+font-family: 'Barlow Condensed', sans-serif;
+font-family: 'Montserrat', sans-serif;
+*/
+
+/* font import */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* variables */
+:root {
+    --prim: #363333;
+    --sec: #272121;
+    --tert: #e16428;
+    --quat: #f6e9e9;
+}
