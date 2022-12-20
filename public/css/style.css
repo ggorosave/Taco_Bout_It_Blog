@@ -20,3 +20,69 @@ font-family: 'Montserrat', sans-serif;
     --tert: #e16428;
     --quat: #f6e9e9;
 }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    background-color: var(--quat);
+}
+
+/* misc styling */
+.rnd {
+    border-radius: 10px;
+}
+
+/* headers */
+header {
+    background-color: var(--prim);
+}
+
+h1 {
+    color: var(--quat);
+}
+
+h1, h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+.card-title {
+    background-color: var(--quat);
+}
+
+/* links */
+nav .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--sec);
+    color: var(--quat);
+}
+
+.card-link {
+    background-color: var(--tert);
+    color: var(--quat);
+}
+
+.happy-taco {
+    width: 4em;
+}
+
+/* animation */
+nav .nav-link:hover {
+    background-color: var(--quat);
+    color: var(--sec);
+}
+
+nav .nav-link:active {
+    background-color: var(--tert);
+    color: var(--sec);
+    transform: scale(.9);
+}
+
+.card-link:hover {
+    background-color: #e16328c0;
+    color: var(--quat);
+}
+
+.card-link:active {
+    transform: scale(.9);
+}
+
