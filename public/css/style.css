@@ -32,6 +32,41 @@ body {
     border-radius: 10px;
 }
 
+/* background colors */
+.bg-prim {
+    background-color: var(--prim);
+}
+
+.bg-sec {
+    background-color: var(--sec);
+}
+
+.bg-tert {
+    background-color: var(--tert);
+}
+
+.bg-quat {
+    background-color: var(--quat);
+}
+
+/* font colors */
+
+.fnt-prim {
+    color: var(--prim);
+}
+
+.fnt-sec {
+    color: var(--sec);
+}
+
+.fnt-tert {
+    color: var(--tert);
+}
+
+.fnt-quat {
+    color: var(--quat);
+}
+
 /* headers */
 header {
     background-color: var(--prim);
@@ -41,7 +76,7 @@ h1 {
     color: var(--quat);
 }
 
-h1, h4 {
+h1, h2, h3, h4 {
     font-family: 'Barlow Condensed', sans-serif;
 }
 
@@ -65,6 +100,32 @@ nav .nav-link {
     width: 4em;
 }
 
+/* forms */
+.form-wrapper {
+    background-color: var(--prim);
+    color: var(--quat);
+}
+
+.sub-btn {
+    background-color: var(--quat);
+    font-weight: 700;
+}
+
+/* Dashboard Links */
+.blog-links {
+    list-style: none;
+}
+
+.blog-link {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+/* Edit Post */
+#delete-button {
+    background-color: #db3c3c;
+}
+
 /* animation */
 nav .nav-link:hover {
     background-color: var(--quat);
@@ -84,5 +145,17 @@ nav .nav-link:active {
 
 .card-link:active {
     transform: scale(.9);
+}
+
+.new-post-link:hover {
+    background-color: #272121c9;
+    color: var(--quat);
+    text-decoration: none;
+}
+
+.blog-link:hover {
+    text-decoration: none;
+    color: var(--quat);
+    background-color: #363333ce;
 }
 
