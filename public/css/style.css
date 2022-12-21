@@ -140,12 +140,14 @@ nav .nav-link {
 }
 
 /* animation */
-nav .nav-link:hover {
+nav .nav-link:hover, 
+#logout-button:hover {
     background-color: var(--quat);
     color: var(--sec);
 }
 
-nav .nav-link:active {
+nav .nav-link:active, 
+#logout-button:active {
     background-color: var(--tert);
     color: var(--sec);
     transform: scale(.9);

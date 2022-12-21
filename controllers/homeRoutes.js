@@ -4,24 +4,24 @@ const checkAuth = require('../utils/auth');
 
 // to render all blogposts on homescreen
 router.get('/', async (req, res) => {
-try {
+    try {
 
-    // finds all blogpost data and includes user data
-    const blogPostData = await BlogPost.findAll({
-        include: [ { model: User, attributes: ['name'], }],
-    });
+        // finds all blogpost data and includes user data
+        const blogPostData = await BlogPost.findAll({
+            include: [{ model: User, attributes: ['name'], }],
+        });
 
-    // serializes data for each blogpost
-    const blogposts = blogPostData.map((blogpost) => blogpost.get({ plain: true }));
+        // serializes data for each blogpost
+        const blogposts = blogPostData.map((blogpost) => blogpost.get({ plain: true }));
 
-    res.render('homepage', {
-        blogposts
-        // add logged in
-    });
+        res.render('homepage', {
+            blogposts
+            // add logged in
+        });
 
-} catch(err) {
-    res.status(500).json(err);
-}
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 // to render blogpast data on blogpost page
@@ -33,7 +33,7 @@ router.get('/blogpost/:id', async (req, res) => {
                     model: User,
                     attributes: ['name'],
                 },
-                
+
             ],
         });
 
@@ -58,7 +58,7 @@ router.get('/blogpost/:id', async (req, res) => {
             comments
         });
 
-    } catch(err) {
+    } catch (err) {
         res.status(400).json(err);
     }
 })
@@ -66,30 +66,60 @@ router.get('/blogpost/:id', async (req, res) => {
 // to render blogpost data on dashboard
 router.get('/dashboard', async (req, res) => {
     try {
-    
+
         // finds all blogpost data and includes user data
         const blogPostData = await BlogPost.findAll({
-            include: [ { model: User, attributes: ['name'], }],
+            include: [{ model: User, attributes: ['name'], }],
         });
-    
+
         // serializes data for each blogpost
         const blogposts = blogPostData.map((blogpost) => blogpost.get({ plain: true }));
-    
+
         res.render('dashboard', {
             blogposts
             // add logged in
         });
-    
-    } catch(err) {
+
+    } catch (err) {
         res.status(500).json(err);
     }
-    });
+});
 
-    // renders login page
-    router.get('/login', (req, res) => {
-        // add logic to redirect if already logged in
-        
-        res.render('login')
-    });
+// renders newpost page
+router.get('/newpost', (req, res) => {
+
+    res.render('newpost')
+})
+
+// renders data to the editpost page
+router.get('/editpost/:id', async (req, res) => {
+
+    try {
+        const blogPostData = await BlogPost.findByPk(req.params.id);
+
+        const blogpost = await blogPostData.get({ plain: true });
+
+        res.render('editpost', {
+            ...blogpost
+            // add logged in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
+})
+
+// renders signup page
+router.get('/signup', (req, res) => {
+
+    res.render('signup')
+});
+
+// renders login page
+router.get('/login', (req, res) => {
+    // add logic to redirect if already logged in
+
+    res.render('login')
+});
 
 module.exports = router;

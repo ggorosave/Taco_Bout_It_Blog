@@ -1,0 +1,20 @@
+<div class="form-wrapper mt-5 pt-1 pb-3 px-3 rounded">
+
+    <h3 class="text-center">Edit Blog Post</h3>
+
+    <form class="form">
+        {{!-- title --}}
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" class="form-control" placeholder="{{title}}">
+        </div>
+        {{!-- content --}}
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea id="content" class="form-control" rows="16">{{content}}</textarea>
+        </div>
+
+        <button id="update-button" type="submit" class="btn btn-block sub-btn mt-4">Update</button>
+        <button id="delete-button" type="button" class="btn btn-block sub-btn mb-1 fnt-quat">Delete</button>
+    </form>
+</div>

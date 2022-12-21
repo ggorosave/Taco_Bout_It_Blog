@@ -2,13 +2,13 @@
 
 {{!-- New Post Button --}}
 <div class="text-center">
-    <a href="#" class="new-post-link bg-sec fnt-quat py-1 px-2 rounded">+ New Post</a>
+    <a href="/newpost" class="new-post-link bg-sec fnt-quat py-1 px-2 rounded">+ New Post</a>
 </div>
 
 <ul class="blog-links my-3">
     {{#each blogposts as |blogpost|}}
     <li>
-        <a href="/blogpost/{{blogpost.id}}" class="blog-link d-block bg-prim fnt-quat px-3 py-2 my-2 rnd">{{blogpost.title}}</a>
+        <a href="/editpost/{{blogpost.id}}" class="blog-link d-block bg-prim fnt-quat px-3 py-2 my-2 rnd">{{blogpost.title}}</a>
     </li>
     {{/each}}
 </ul>
