@@ -85,6 +85,10 @@ h1, h2, h3, h4 {
     font-family: 'Barlow Condensed', sans-serif;
 }
 
+#logout-button {
+    border: none;
+}
+
 .card-title {
     background-color: var(--quat);
 }

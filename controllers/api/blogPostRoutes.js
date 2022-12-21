@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, BlogPost } = require('../../models');
+const { User, BlogPost, Comment } = require('../../models');
 // TODO: add in authorization
 const checkAuth = require('../../utils/auth');
 
@@ -7,11 +7,11 @@ const checkAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
     try {
         const blogPostData = await BlogPost.findAll({
-            include: [{model: User, attributes: {exclude: ['password', 'email']}}],
+            include: [{ model: User, attributes: { exclude: ['password', 'email'] } }],
         });
 
         res.status(200).json(blogPostData);
-    } catch(err) {
+    } catch (err) {
         res.status(400).json(err);
     }
 });
@@ -20,22 +20,31 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const blogPostData = await BlogPost.findByPk(req.params.id, {
-            include: [{ model: User, attributes: ['name'], },],
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    include: [
+                        {
+                            model: User,
+                            attributes: ['name'],
+                        }
+                    ]
+                },
+            ],
         });
 
-        const blogpost = blogPostData.get({ plain: true })
 
         if (!blogPostData) {
             res.status(404).json({ message: 'No blog post found with this id!' });
             return;
         }
 
-        res.render('blogpost', {
-            ...blogpost
-        })
-
         res.status(200).json(blogPostData);
-    } catch(err) {
+    } catch (err) {
         res.status(400).json(err);
     }
 })
@@ -46,7 +55,7 @@ router.post('/', async (req, res) => {
         const newBlogPost = await BlogPost.create(req.body);
 
         res.status(200).json(newBlogPost);
-    } catch(err) {
+    } catch (err) {
         res.status(400).json(err);
     }
 });
@@ -67,7 +76,7 @@ router.put('/:id', async (req, res) => {
 
         res.status(200).json(updatedBlogPost);
 
-    } catch(err) {
+    } catch (err) {
         res.status(400).json(err);
     }
 });
@@ -87,7 +96,7 @@ router.delete('/:id', async (req, res) => {
         }
 
         res.status(200).json(deletedBlogPost);
-    } catch(err) {
+    } catch (err) {
         res.status(400).json(err);
     }
 })
