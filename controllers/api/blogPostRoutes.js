@@ -19,12 +19,20 @@ router.get('/', async (req, res) => {
 // route to get a specific post
 router.get('/:id', async (req, res) => {
     try {
-        const blogPostData = await BlogPost.findByPk(req.params.id);
+        const blogPostData = await BlogPost.findByPk(req.params.id, {
+            include: [{ model: User, attributes: ['name'], },],
+        });
+
+        const blogpost = blogPostData.get({ plain: true })
 
         if (!blogPostData) {
             res.status(404).json({ message: 'No blog post found with this id!' });
             return;
         }
+
+        res.render('blogpost', {
+            ...blogpost
+        })
 
         res.status(200).json(blogPostData);
     } catch(err) {

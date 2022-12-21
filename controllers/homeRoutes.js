@@ -15,6 +15,7 @@ try {
 
     res.render('homepage', {
         blogposts
+        // add logged in
     });
 
 } catch(err) {
