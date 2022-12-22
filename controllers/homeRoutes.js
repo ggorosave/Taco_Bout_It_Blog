@@ -15,8 +15,8 @@ router.get('/', async (req, res) => {
         const blogposts = blogPostData.map((blogpost) => blogpost.get({ plain: true }));
 
         res.render('homepage', {
-            blogposts
-            // add logged in
+            blogposts,
+            logged_in: req.session.logged_in
         });
 
     } catch (err) {
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 });
 
 // to render blogpast data on blogpost page
-router.get('/blogpost/:id', async (req, res) => {
+router.get('/blogpost/:id', checkAuth, async (req, res) => {
     try {
         const blogPostData = await BlogPost.findByPk(req.params.id, {
             include: [
@@ -55,7 +55,8 @@ router.get('/blogpost/:id', async (req, res) => {
 
         res.render('blogpost', {
             ...blogpost,
-            comments
+            comments,
+            logged_in: req.session.logged_in
         });
 
     } catch (err) {
@@ -64,7 +65,7 @@ router.get('/blogpost/:id', async (req, res) => {
 })
 
 // to render blogpost data on dashboard
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', checkAuth, async (req, res) => {
     try {
 
         // finds all blogpost data and includes user data
@@ -76,8 +77,8 @@ router.get('/dashboard', async (req, res) => {
         const blogposts = blogPostData.map((blogpost) => blogpost.get({ plain: true }));
 
         res.render('dashboard', {
-            blogposts
-            // add logged in
+            blogposts,
+            logged_in: req.session.logged_in
         });
 
     } catch (err) {
@@ -86,13 +87,15 @@ router.get('/dashboard', async (req, res) => {
 });
 
 // renders newpost page
-router.get('/newpost', (req, res) => {
+router.get('/newpost', checkAuth, (req, res) => {
 
-    res.render('newpost')
+    res.render('newpost', {
+        logged_in: req.session.logged_in
+    })
 })
 
 // renders data to the editpost page
-router.get('/editpost/:id', async (req, res) => {
+router.get('/editpost/:id', checkAuth, async (req, res) => {
 
     try {
         const blogPostData = await BlogPost.findByPk(req.params.id);
@@ -100,8 +103,8 @@ router.get('/editpost/:id', async (req, res) => {
         const blogpost = await blogPostData.get({ plain: true });
 
         res.render('editpost', {
-            ...blogpost
-            // add logged in
+            ...blogpost,
+            logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
@@ -118,7 +121,11 @@ router.get('/signup', (req, res) => {
 // renders login page
 router.get('/login', (req, res) => {
     // add logic to redirect if already logged in
-
+    
+    if (req.session.logged_in) {
+        res.redirect('dashboard');
+    }
+    
     res.render('login')
 });
 

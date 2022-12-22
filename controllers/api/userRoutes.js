@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 //login path
 router.post('/login', async (req, res) => {
     try {
-        
+      
         // finds user data with matching email
         const userData = await User.findOne({
             where: {
@@ -43,6 +43,7 @@ router.post('/login', async (req, res) => {
 
         // Checks if password is valid and sets it to a variable
         const validPassword = await userData.checkPassword(req.body.password);
+
         
         // if password is not valid, send an error message
         if (!validPassword) {

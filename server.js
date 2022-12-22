@@ -4,8 +4,6 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const path = require('path');
 const sequelize = require('./config/connection');
-// DELETE?
-// const { strict } = require('assert');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -23,7 +21,7 @@ const tacoSession = {
         sameSite: 'strict',
     },
     resave: false,
-    saveUninitialixed: true,
+    saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize
     })
