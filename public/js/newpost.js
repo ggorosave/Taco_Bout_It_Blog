@@ -15,7 +15,7 @@ const newPostFormHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to post blog');
+            window.alert('Failed to post blog');
         }
     }
 };

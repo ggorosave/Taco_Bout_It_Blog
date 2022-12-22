@@ -21,7 +21,7 @@ const signUpFormHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert(response.statusText);
+            window.alert(response.statusText);
         }
     }
 

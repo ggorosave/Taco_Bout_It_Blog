@@ -1,4 +1,5 @@
 
+// gets new data from form and sends it to server to update a post
 const editPostFormHandler = async (event) => {
 
     event.preventDefault();
@@ -19,11 +20,12 @@ const editPostFormHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to update blog');
+            window.alert('Failed to update blog');
         }
     }
 };
 
+// gets the blogpost id from a data attribute and sends it to the server to delete a post
 const deletePostButtonHandler = async (event) => {
 
     if (event.target.getAttribute('data-id')) {
@@ -36,7 +38,7 @@ const deletePostButtonHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to delete blog post');
+            window.alert('Failed to delete blog post');
         }
     }
 

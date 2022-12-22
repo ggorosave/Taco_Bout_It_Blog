@@ -1,58 +1,12 @@
 const router = require('express').Router();
-const { User, BlogPost, Comment } = require('../../models');
+const { BlogPost } = require('../../models');
 // TODO: add in authorization
 const checkAuth = require('../../utils/auth');
 
-// route to get all posts
-router.get('/', async (req, res) => {
-    try {
-        const blogPostData = await BlogPost.findAll({
-            include: [{ model: User, attributes: { exclude: ['password', 'email'] } }],
-        });
-
-        res.status(200).json(blogPostData);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-// route to get a specific post
-router.get('/:id', async (req, res) => {
-    try {
-        const blogPostData = await BlogPost.findByPk(req.params.id, {
-            include: [
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-                {
-                    model: Comment,
-                    include: [
-                        {
-                            model: User,
-                            attributes: ['name'],
-                        }
-                    ]
-                },
-            ],
-        });
-
-
-        if (!blogPostData) {
-            res.status(404).json({ message: 'No blog post found with this id!' });
-            return;
-        }
-
-        res.status(200).json(blogPostData);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-})
-
-// -------------------------------------------------------
+// route /blogposts
 
 // route to create a new post
-router.post('/', async (req, res) => {
+router.post('/', checkAuth, async (req, res) => {
     try {
         const newBlogPost = await BlogPost.create({
             ...req.body,
@@ -66,7 +20,7 @@ router.post('/', async (req, res) => {
 });
 
 // route to update a post
-router.put('/:id', async (req, res) => {
+router.put('/:id', checkAuth, async (req, res) => {
     try {
         const updatedBlogPost = await BlogPost.update(req.body, {
             where: {
@@ -87,7 +41,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // route to delete a post
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', checkAuth, async (req, res) => {
     try {
         const deletedBlogPost = await BlogPost.destroy({
             where: {

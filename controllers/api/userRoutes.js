@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// /users route
+// route /users
 
 // path to create user (sign up)
 router.post('/', async (req, res) => {
@@ -79,6 +79,5 @@ router.post('/logout', (req, res) => {
 });
 
 // TODO: profile path? (if time allows)
-
 
 module.exports = router;

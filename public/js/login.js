@@ -16,6 +16,7 @@ const loginFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json'},
         });
 
+        // console.log(response.json());
         // if the response is ok, send user to the dashboard 
         if (response.ok) {
 
@@ -23,7 +24,7 @@ const loginFormHandler = async (event) => {
         } else {
 
             // if response is bad, send status in an alert
-            alert(response.statusText);
+            window.alert(response.statusText);
         }
     }
 

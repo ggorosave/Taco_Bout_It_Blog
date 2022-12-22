@@ -18,20 +18,20 @@
 
 <body>
     {{!-- <!-- Navbar --> --}}
-    <header class="navbar justify-content-center justify-content-md-between align-items-center">
+    <header class="navbar justify-content-center justify-content-md-between align-items-center bg-prim">
 
         <div class="d-flex flex-row justify-content-center align-items-center">
             <img src="/images/Happy Taco.png" alt="a happy taco" class="happy-taco mr-3">
-            <h1>Taco Bout It</h1>
+            <h1 class="fnt-quat">Taco Bout It</h1>
         </div>
 
         <nav class="d-flex flew-row justify-content-end my-2">
             <ul class="nav">
                 <li class="nav-item mx-1">
-                    <a class="nav-link rnd py-1 px-2" href="/">Home</a>
+                    <a class="nav-link bg-sec fnt-quat rnd py-1 px-2" href="/">Home</a>
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="nav-link rnd py-1 px-2" href="/dashboard">Dashboard</a>
+                    <a class="nav-link bg-sec fnt-quat rnd py-1 px-2" href="/dashboard">Dashboard</a>
                 </li>
                 {{#if logged_in}}
                 <li class="nav-item mx-1">
@@ -39,7 +39,7 @@
                 </li>
                 {{else}}
                 <li class="nav-item mx-1">
-                    <a class="nav-link rnd py-1 px-2" href="/login">Login</a>
+                    <a class="nav-link bg-sec fnt-quat rnd py-1 px-2" href="/login">Login</a>
                 </li>
                 {{/if}}
             </ul>
