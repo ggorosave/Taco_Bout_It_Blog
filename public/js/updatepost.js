@@ -1,12 +1,16 @@
 
 const editPostFormHandler = async (event) => {
+
     event.preventDefault();
 
     const title = document.querySelector('#title').value.trim();
     const content = document.querySelector('#content').value.trim();
 
-    if (title && content) {
-        const response = await fetch('/api/blogposts', {
+    if (title && content && event.target.getAttribute('data-id')) {
+
+        const id = event.target.getAttribute('data-id');
+
+        const response = await fetch(`/api/blogposts/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json'},
@@ -25,7 +29,7 @@ const deletePostButtonHandler = async (event) => {
     if (event.target.getAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
-        const response = await fetch(`api/blogposts/${id}`, {
+        const response = await fetch(`/api/blogposts/${id}`, {
             method: 'DELETE',
         })
 
@@ -40,4 +44,3 @@ const deletePostButtonHandler = async (event) => {
 
 document.querySelector('#update-button').addEventListener('click', editPostFormHandler);
 document.querySelector('#delete-button').addEventListener('click', deletePostButtonHandler);
-

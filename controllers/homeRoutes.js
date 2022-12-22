@@ -98,14 +98,14 @@ router.get('/newpost', checkAuth, (req, res) => {
 })
 
 // renders data to the editpost page
-router.get('/editpost/:id', checkAuth, async (req, res) => {
+router.get('/updatepost/:id', checkAuth, async (req, res) => {
 
     try {
         const blogPostData = await BlogPost.findByPk(req.params.id);
 
         const blogpost = await blogPostData.get({ plain: true });
 
-        res.render('editpost', {
+        res.render('updatepost', {
             ...blogpost,
             logged_in: req.session.logged_in
         });
