@@ -24,9 +24,11 @@
         {{!-- <!-- content --> --}}
         <div class="form-group">
             <label for="content">Content:</label>
-            <textarea id="content" class="form-control"></textarea>
+            <textarea id="comment-content" class="form-control"></textarea>
         </div>
 
-        <button id="submit-button" type="submit" class="btn btn-block sub-btn mt-4">Submit</button>
+        <button id="submit-button" type="submit" class="btn btn-block sub-btn mt-4" data-bpId="{{id}}">Submit</button>
     </form>
 </div>
+
+<script src="/js/comment.js"></script>
