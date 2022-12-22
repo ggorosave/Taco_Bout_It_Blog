@@ -49,10 +49,15 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+// -------------------------------------------------------
+
 // route to create a new post
 router.post('/', async (req, res) => {
     try {
-        const newBlogPost = await BlogPost.create(req.body);
+        const newBlogPost = await BlogPost.create({
+            ...req.body,
+        user_id: req.session.user_id
+        });
 
         res.status(200).json(newBlogPost);
     } catch (err) {

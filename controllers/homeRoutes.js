@@ -70,6 +70,9 @@ router.get('/dashboard', checkAuth, async (req, res) => {
 
         // finds all blogpost data and includes user data
         const blogPostData = await BlogPost.findAll({
+            where: {
+                user_id: req.session.user_id
+            },
             include: [{ model: User, attributes: ['name'], }],
         });
 
