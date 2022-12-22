@@ -1,0 +1,35 @@
+<section class="blog-article bg-light my-3 py-1 rounded">
+    {{!-- <!-- title --> --}}
+    <h2 class="text-center bg-quat mx-2 py-1">{{title}}</h2>
+    <h6 class="text-right mr-3">by {{user.name}}</h6>
+
+    {{!-- <!-- content --> --}}
+    <p class="mx-3 mt-4">{{content}}</p>
+</section>
+
+{{!-- <!-- Comments --> --}}
+<section>
+    <h4>Comments</h4>
+{{#each comments as |comment| }}
+{{> comment-details}}
+{{/each}}
+</section>
+
+{{!-- <!-- Create Comments --> --}}
+<div class="form-wrapper mt-5 pt-1 pb-3 px-3 rounded">
+
+    <h3 class="text-center">Write Comment</h3>
+
+    <form class="form">
+        {{!-- <!-- content --> --}}
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea id="comment-content" class="form-control"></textarea>
+        </div>
+
+        <button id="submit-button" type="submit" class="btn btn-block sub-btn mt-4" data-bpId="{{id}}">Submit</button>
+    </form>
+</div>
+
+{{!-- connects to comment.js --}}
+<script src="/js/comment.js"></script>

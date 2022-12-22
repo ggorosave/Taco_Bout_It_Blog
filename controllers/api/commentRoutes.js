@@ -1,38 +1,16 @@
 const router = require('express').Router();
-const { User, Comment } = require('../../models');
+const { Comment } = require('../../models');
 const checkAuth = require('../../utils/auth');
 
-// route to view all comments
-router.get('/', async (req, res) => {
-    try {
-        const commentData = await Comment.findAll();
-
-        res.status(200).json(commentData);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-// route to view a specific comment
-router.get('/:id', async (req, res) => {
-    try {
-        const commentData = await Comment.findByPk(req.params.id);
-
-        if (!commentData) {
-            res.status(404).json({ message: 'No comment found with this id!' });
-            return;
-        }
-
-        res.status(200).json(commentData);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
+// route /comments
 
 // route to create a comment
-router.post('/', async (req, res) => {
+router.post('/', checkAuth, async (req, res) => {
     try {
-        const newComment = await Comment.create(req.body);
+        const newComment = await Comment.create({
+            ...req.body,
+            user_id: req.session.user_id
+        });
 
         res.status(200).json(newComment);
     } catch (err) {
@@ -41,7 +19,7 @@ router.post('/', async (req, res) => {
 });
 
 // route to update a comment (if time allows)
-router.put('/:id', async (req, res) => {
+router.put('/:id', checkAuth, async (req, res) => {
     try {
         const updatedComment = await Comment.update(req.body, {
             where: {
@@ -61,7 +39,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // route to delete a comment (if time allows)
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', checkAuth, async (req, res) => {
     try {
         const deletedComment = await Comment.destroy({
             where: {
