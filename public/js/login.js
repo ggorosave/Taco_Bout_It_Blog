@@ -6,9 +6,27 @@ const loginFormHandler = async (event) => {
     const email = document.querySelector('#login-email').value.trim();
     const password = document.querySelector('#login-password').value.trim();
 
+    // if the user has entered an email and password
     if (email && password) {
 
-        const response = await fetch('')
+        // sends a fetch request to the user api
+        const response = await fetch('/api/users/login', {
+            method: 'POST',
+            body: JSON.stringify({ email, password }),
+            headers: { 'Content-Type': 'application/json'},
+        });
+
+        // if the response is ok, send user to the dashboard 
+        if (response.ok) {
+
+            document.location.replace('/dashboard')
+        } else {
+
+            // if response is bad, send status in an alert
+            alert(response.statusText);
+        }
     }
 
 };
+
+document.querySelector('#login-form').addEventListener('submit', loginFormHandler);

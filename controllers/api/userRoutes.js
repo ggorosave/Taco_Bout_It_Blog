@@ -1,11 +1,16 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// /users route
+
 // path to create user (sign up)
 router.post('/', async (req, res) => {
     try {
+
+        // creates new user with the input data from signup page
         const userData = await User.create(req.body);
 
+        // saves user id and logged in status to session
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
@@ -29,12 +34,24 @@ router.post('/login', async (req, res) => {
             }
         });
         
+        // if user doesn't exist, send an error message
         if(!userData) {
 
             res.status(400).json({ message: 'Incorrect email or password, please try again.'});
             return;
         }
 
+        // Checks if password is valid and sets it to a variable
+        const validPassword = await userData.checkPassword(req.body.password);
+        
+        // if password is not valid, send an error message
+        if (!validPassword) {
+
+            res.status(400).json({ message: 'Incorrect email or password, please try again.'});
+            return;
+        }
+
+        // saves user id and logged in status to session
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
@@ -49,6 +66,8 @@ router.post('/login', async (req, res) => {
 
 // logout path
 router.post('/logout', (req, res) => {
+
+    // if the users logged in then destroy the session
     if(req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
