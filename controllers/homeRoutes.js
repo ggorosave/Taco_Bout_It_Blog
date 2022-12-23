@@ -68,13 +68,25 @@ router.get('/blogpost/:id', checkAuth, async (req, res) => {
 router.get('/dashboard', checkAuth, async (req, res) => {
     try {
 
-        // finds all blogpost data and includes user data
-        const blogPostData = await BlogPost.findAll({
-            where: {
-                user_id: req.session.user_id
-            },
-            include: [{ model: User, attributes: ['name'], }],
-        });
+        let blogPostData
+
+        if (req.session.user_id === 1) {
+
+            // finds all blogpost data and includes user data
+            blogPostData = await BlogPost.findAll({
+                include: [{ model: User, attributes: ['name'], }],
+            });
+
+        } else {
+
+            // finds all blogpost data and includes user data
+            blogPostData = await BlogPost.findAll({
+                where: {
+                    user_id: req.session.user_id
+                },
+                include: [{ model: User, attributes: ['name'], }],
+            });
+        }
 
         // serializes data for each blogpost
         const blogposts = blogPostData.map((blogpost) => blogpost.get({ plain: true }));
