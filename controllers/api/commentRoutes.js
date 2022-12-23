@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 const checkAuth = require('../../utils/auth');
+const postDate = require('../../utils/date');
 
 // route /comments
 
@@ -9,6 +10,7 @@ router.post('/', checkAuth, async (req, res) => {
     try {
         const newComment = await Comment.create({
             ...req.body,
+            date: postDate(),
             user_id: req.session.user_id
         });
 
