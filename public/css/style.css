@@ -54,8 +54,8 @@ body {
     z-index: 1;
 }
 
-/* font colors */
 
+/* font colors */
 .fnt-prim {
     color: var(--prim);
 }

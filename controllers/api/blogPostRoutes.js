@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { BlogPost } = require('../../models');
 // TODO: add in authorization
-const { getDate, checkAuth }  = require('../../utils');
+const checkAuth = require('../../utils/auth');
+const postDate = require('../../utils/date');
 
 // route /blogposts
 
@@ -11,7 +12,7 @@ router.post('/', checkAuth, async (req, res) => {
         const newBlogPost = await BlogPost.create({
             ...req.body,
             // helper
-            date: getDate(),
+            date: postDate(),
             user_id: req.session.user_id
         });
 

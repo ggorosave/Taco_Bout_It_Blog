@@ -1,7 +1,7 @@
 {{#each blogposts as |blogpost| }}
 <div class="card my-2">
     <div class="card-body">
-        <h4 class="card-title bg-quat py-1 pl-1 rounded">{{blogpost.title}} {{blogpost.date}}</h4>
+        <h4 class="card-title bg-quat py-1 pl-1 rounded">{{blogpost.title}} <span class="float-right mr-2">{{blogpost.date}}</span></h4>
         <h6 class="text-right mr-3">by {{blogpost.user.name}}</h6>
         <p class="card-text overflow-hidden mx-1">{{blogpost.content}}</p>
         <a class="card-link bg-tert fnt-quat float-right mr-2 py-1 px-2 rounded" href="/blogpost/{{blogpost.id}}">Read More</a>

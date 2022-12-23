@@ -1,12 +1,12 @@
 [
     {
         "name": "Fozzi",
-        "email:": "fozzithebear@wakawaka.com",
+        "email": "fozzithebear@wakawaka.com",
         "password": "wakawaka123"
     },
     {
         "name": "Gonzo",
-        "email:": "gonzo@thegonzo.com",
+        "email": "gonzo@thegonzo.com",
         "password": "i<3chickens"
     }
 ]

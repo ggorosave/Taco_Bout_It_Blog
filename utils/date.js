@@ -1,8 +1,8 @@
 
-const getDate = async () => {
+const postDate = () => {
     const today = new Date();
 
     return `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`
 };
 
-module.exports = getDate;
+module.exports = postDate;
