@@ -15,7 +15,7 @@ const hbs = exphbs.create({});
 const tacoSession = {
     secret: "Super secret taco",
     cookie: {
-        maxAge: 300000,
+        maxAge: 3600000,
         httpOnly: true,
         secure: false,
         sameSite: 'strict',
