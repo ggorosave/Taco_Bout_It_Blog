@@ -1,0 +1,14 @@
+[
+    {
+        "title": "About",
+        "content": "This blog seeks to answer a fundamentally pressing question—what is a taco? In our view, any food that is folded inside a round flat bread, or even vegetable, could be considered a taco. Let’s talk about delicious tacos that we’ve eaten, share recipes to make the best tacos, and have a friendly discussion about whether a hotdog is also a taco.",
+        "date": "12/20/2022",
+        "user_id": 1
+    },
+    {
+        "title": "Hot Dogs Are the Best Tacos",
+        "content": "Some of you might already be thinking, This guy thinks hot dogs are tacos? He must be crazy or an idiot. You might be right on both assumptions, but hear me out! While a hot dog bun isn’t a flat round bread-like vehicle for meat, vegetables, and other ingredients, it is still a bread-like vehicle for other foods that we must fold just like a taco! The biggest difference is a hot dog is tube shaped, while taco filling is usually chopped or ground meat. A hot dog is less likely to fall out of a bun.",
+        "date": "12/21/2022",
+        "user_id": 2
+    }
+]

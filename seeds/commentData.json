@@ -1,0 +1,14 @@
+[
+    {
+        "content": "Hot dog buns aren't flat, so I dunno if I'd say they were tacos.",
+        "date": "12/22/2022",
+        "blogpost_id": 2,
+        "user_id": 1
+    },
+    {
+        "content": "But we eat them in almost exactly the same way!",
+        "date": "12/22/2022",
+        "blogpost_id": 2,
+        "user_id": 2
+    }
+]
