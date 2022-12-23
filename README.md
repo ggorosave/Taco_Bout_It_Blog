@@ -6,7 +6,7 @@ A lot of people on the internet love to share their opinions on different topics
 
 ### Deployed Application
 
-[Taco Bout It](https://www.example.com)
+[Taco Bout It](https://taco-bout-it-blog.herokuapp.com/)
 
 ## Table of Contents 
 
