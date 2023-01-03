@@ -4,6 +4,14 @@
 ## Description
 A lot of people on the internet love to share their opinions on different topics, and one way people can do that is through blogs. Taco Bout It is a blog on which people can share their thoughts about an extremely important topic—tacos. Users can discuss anything they want about tacos, including taco recipes, good taco restaurants, or even what they think qualifies as taco! While the topic of the blog is presented in good fun, what’s more is the way in which the blog was built. Taco Bout It is a full stack application built with [Node.js](https://nodejs.org/en/), [Handlebars](https://www.npmjs.com/package/express-handlebars), [Express](https://www.npmjs.com/package/express), [Sequelize](https://sequelize.org/), [mysql2](https://www.npmjs.com/package/mysql2), [Express Session](https://www.npmjs.com/package/express-session), and of course, JavaScript, HTML, and CSS. I used the [Bootstrap](https://getbootstrap.com/docs/4.5) framework and the application was deployed through [Heroku](https://www.heroku.com/). The taco mascot was AI generated with [DALL-E](https://openai.com/dall-e-2/).
 
+![Homepage](./public/images/homepage.png)
+
+![Dashboard](./public/images/dashboard.png)
+
+![Blog Post](./public/images/blogpost.png)
+
+![Update Post](./public/images/updatepost.png)
+
 ### Deployed Application
 
 [Taco Bout It](https://taco-bout-it-blog.herokuapp.com/)
